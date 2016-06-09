@@ -9,13 +9,13 @@ var app = express();
 
 app.set('port', process.env.PORT || '3000');
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({extended: true}));
 app.use('/', router);
 
 router.get('/reboot', function (req, res) {
-   var name = req.query.name;
+    var name = req.query.name;
     var options = {
-        url: 'https://api.heroku.com/apps/'+ name + '/dynos/web.1',
+        url: 'https://api.heroku.com/apps/' + name + '/dynos/web.1',
         method: 'DELETE',
         headers: {
             Accept: 'application/vnd.heroku+json; version=3',
@@ -25,14 +25,13 @@ router.get('/reboot', function (req, res) {
     request(options, function (err, response) {
         if (response && response.statusCode === 202) {
             console.log(name.toUpperCase() + ' has been successfully restarted');
-            res.status(200).json({ message: 'DONE' });
+            res.status(200).json({message: 'DONE'});
         } else if (err) {
             console.log('Failed to reboot: [' + err.message + ']');
-            res.status(410).json({ message: 'FAILED' });
+            res.status(410).json({message: 'FAILED'});
         } else {
-            console.log(response);
-            console.log('Failed to reboot', 'Status: [' + response.statusCode + ']');
-            res.status(500).json({ message: 'FAILED' });
+            console.log('Failed to reboot', 'Status: [' + response.statusCode + ']', 'Message: [' + response.message + ']');
+            res.status(500).json({message: 'FAILED'});
         }
     });
 });
