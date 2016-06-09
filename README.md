@@ -1,2 +1,2 @@
-# heroku-instance-rewaker
-Rewake heroku instances
+# Heroku APP Rewaker
+Reboots heroku instances by request.

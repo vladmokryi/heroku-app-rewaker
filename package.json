@@ -1,0 +1,38 @@
+{
+  "name": "heroku-app-rewaker",
+  "version": "0.0.1",
+  "description": "Reboots heroku instances by request.",
+  "keywords": [
+    "API",
+    "reboot",
+    "heroku"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vladmokryi/heroku-app-rewaker.git"
+  },
+  "author": {
+    "name": "Vlad Mokryi",
+    "email": "vladmokryi@gmail.com",
+    "url": "https://github.com/vladmokryi"
+  },
+  "contributors": [{
+    "name": "Serhii Kocherezhko",
+    "email": "serhii.kocherezhko@yahoo.com",
+    "url": "https://github.com/serhii-kcrzko"
+  }],
+  "license": "GPL-3.0",
+  "main": "app.js",
+  "scripts": {
+    "start": "forever --minUptime 1000 --spinSleepTime 1000 -c \"node --stack-size=65500\" app.js"
+  },
+  "engines": {
+    "node": "4.4.*"
+  },
+  "dependencies": {
+    "body-parser": "1.15.1",
+    "express": "4.13.4",
+    "forever": "0.15.1",
+    "request": "2.72.0"
+  }
+}
