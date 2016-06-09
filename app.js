@@ -30,7 +30,8 @@ router.get('/reboot', function (req, res) {
             console.log('Failed to reboot: [' + err.message + ']');
             res.status(410).json({ message: 'FAILED' });
         } else {
-            console.log('Failed to reboot: [Wrong scenario]');
+            console.log(response);
+            console.log('Failed to reboot', 'Status: [' + response.statusCode + ']');
             res.status(500).json({ message: 'FAILED' });
         }
     });
